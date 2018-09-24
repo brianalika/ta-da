@@ -1,8 +1,11 @@
+// Build something in here that determines the environment; We added line 8 and commented out line 7
+
 var LocalStrategy   = require('passport-local').Strategy;
 var mysql = require('mysql');
 var bcrypt = require('bcrypt-nodejs');
 var dbconfig = require('./database');
-var connection = mysql.createConnection(dbconfig.connection);
+// var connection = mysql.createConnection(dbconfig.connection);
+var connection = require("./connection")
 
 connection.query('USE ' + dbconfig.database);
 module.exports = function(passport) {
