@@ -7,7 +7,10 @@ var dbconfig = require('./database');
 // var connection = mysql.createConnection(dbconfig.connection);
 var connection = require("./connection")
 
-connection.query('USE ' + dbconfig.database);
+if (!process.env.JAWSDB_URL) {
+    connection.query('USE ' + dbconfig.database);
+    }
+
 module.exports = function(passport) {
     // passport session setup ==================================================
     passport.serializeUser(function(user, done) {
